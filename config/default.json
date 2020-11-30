@@ -1,0 +1,6 @@
+{
+    "mongoURI" : "mongodb+srv://virajv1112:Rooju2511@cluster0.at4jx.mongodb.net/<dbname>?retryWrites=true&w=majority",
+    "jwtSecret": "secrettoken",
+    "githubClientId":"6a7729430c440dc1abd7",
+    "githubSecret":"10bc20a4bd5502e0eb549887e14abc43a3938b27"
+}
