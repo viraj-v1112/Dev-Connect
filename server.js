@@ -1,6 +1,5 @@
 const express = require('express');
 const connectDB = require('./config/db');
-const path = require('path');
 
 const app = express();
 
@@ -8,7 +7,10 @@ const app = express();
 connectDB();
 
 // Init Middleware
-app.use(express.json());
+app.use(express.json({ extended: false }));
+
+// Default opening route
+app.get('/', (req, res) => res.send('API Running'));
 
 // Define Routes
 app.use('/api/users', require('./routes/api/users'));
@@ -16,16 +18,16 @@ app.use('/api/auth', require('./routes/api/auth'));
 app.use('/api/profile', require('./routes/api/profile'));
 app.use('/api/posts', require('./routes/api/posts'));
 
-// // Serve static assets in production
-// if (process.env.NODE_ENV === 'production') {
-//   // Set static folder
-//   app.use(express.static('client/build'));
-
-//   app.get('*', (req, res) => {
-//     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-//   });
-// }
-
+// Define the PORT number for the backend server.
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+app.listen(PORT, () => {
+  console.log(`Server running on PORT number ${PORT}`);
+});
+
+// {
+//     "mongoURI" : "mongodb+srv://priyavmehta:priyavmehta@developers.gb45a.mongodb.net/developers?retryWrites=true&w=majority",
+//     "jwtSecret": "mysecrettoken",
+//     "githubClientId": "66d03133299a923b31bd",
+//     "githubClientSecret": "6d6e937ec0d187beb6a617d5a6509b88583cc5c2"
+// }
